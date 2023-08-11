@@ -1,0 +1,16 @@
+# intialization of the application
+npx create-next-app@latest ./
+
+# for client side rendering ( by default server-side rendering)
+"use client" => on the starting of the page.js
+
+# data fetching 
+1. Server Side Rendering (SSR)
+2. Client Side Generation (SSG)
+3. Incremental Static Generation (ISR)
+
+# dependencies
+npm install bcrypt mongoose next-auth
+
+# to next auth secret string
+openssl rand -base64 32
