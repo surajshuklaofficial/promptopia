@@ -5,6 +5,9 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
+import tick from 'Public/assets/icons/tick.svg';
+import copy from 'Public/assets/icons/copy.svg';
+
 const PromptCard = ({ post , handleTagClick, handleEdit, handleDelete }) => {
   const { data: session } = useSession();
   const pathname = usePathname();
@@ -39,8 +42,8 @@ const PromptCard = ({ post , handleTagClick, handleEdit, handleDelete }) => {
         <div className="copy_btn" onClick={handleCopy}>
           <Image
             src={copied === post.prompt 
-              ? '/assets/icons/tick.svg'
-              : '/assets/icons/copy.svg'
+              ? tick
+              : copy
             }
             width={12}
             height={12}
