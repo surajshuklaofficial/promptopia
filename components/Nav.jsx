@@ -12,7 +12,7 @@ const Nav = () => {
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
-
+  console.log('se',session);
   useEffect(() => {
 
     const setUpProviders = async () => {
@@ -20,10 +20,6 @@ const Nav = () => {
 
       setProviders(res); 
     }
-    // (async () => {
-    //   const res = await getProviders();
-    //   setProviders(res);
-    // })();
 
     setUpProviders();  
   }, []);
@@ -53,7 +49,7 @@ const Nav = () => {
               Sign Out
             </button>
 
-            <Link href={`/profile/${session?.user?.id}/${session?.user?.name}`}>
+            <Link href={`/profile/${session?.user?.id}/${session?.user?.name.replace(" ","")}`}>
               <Image
                 src={session?.user.image}
                 width={37}
@@ -98,7 +94,7 @@ const Nav = () => {
             {toggleDropdown && (
               <div className='dropdown'>
                 <Link
-                  href={`/profile/${session?.user?.id}/${session?.user?.name}`}
+                  href={`/profile/${session?.user?.id}/${session?.user?.name.replace(" ","")}`}
                   className='dropdown_link'
                   onClick={() => setToggleDropdown(false)}
                 >

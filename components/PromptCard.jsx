@@ -21,7 +21,7 @@ const PromptCard = ({ post , handleTagClick, handleEdit, handleDelete }) => {
 
     setTimeout(() => setCopied(""), 3000);
   }
-
+  console.log('hi,',post)
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
@@ -35,8 +35,8 @@ const PromptCard = ({ post , handleTagClick, handleEdit, handleDelete }) => {
           />
 
           <div className="flex flex-col">
-              <h3 className="font-satoshi font-semibold text-gray-900 text-lg text-left">{post.creator.username}</h3>
-              <p className="font-inter text-sm text-gray-500">{post.creator.email}</p>
+              <h3 className="font-satoshi font-semibold text-gray-900 text-lg text-left">{post?.creator?.username}</h3>
+              <p className="font-inter text-sm text-gray-500">{post?.creator?.email}</p>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ const PromptCard = ({ post , handleTagClick, handleEdit, handleDelete }) => {
         #{post.tag}
       </p>
       
-      { session?.user.id === post.creator._id && pathname === `/profile/${post?.creator?._id}/${post?.creator?.username}` && (
+      { session?.user?.id === post?.creator?._id && pathname === `/profile/${post?.creator?._id}/${post?.creator?.username}` && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p
             className='font-inter text-sm green_gradient cursor-pointer'
