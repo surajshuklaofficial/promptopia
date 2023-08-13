@@ -10,9 +10,10 @@ import copy from 'Public/assets/icons/copy.svg';
 
 const PromptCard = ({ post , handleTagClick, handleEdit, handleDelete }) => {
   const { data: session } = useSession();
+  const router = useRouter();
   const pathname = usePathname();
-  
   const [copied, setCopied] = useState('');
+  const routingUrl = session?.creator
 
   const handleCopy = () => {
     setCopied(post.prompt);
@@ -24,7 +25,7 @@ const PromptCard = ({ post , handleTagClick, handleEdit, handleDelete }) => {
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
+        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer" onClick={() => router.push(`/profile/${post?.creator?._id}/${post?.creator?.username}`)}>
           <Image
             src={post?.creator?.image}
             alt='user_image'
@@ -52,13 +53,13 @@ const PromptCard = ({ post , handleTagClick, handleEdit, handleDelete }) => {
         </div>
       </div>
 
-      <p className="my-4 font-satoshi text-sm text-gray-700 text-left">{post.prompt}</p>
-      <p className="font-inter text-sm blue_gradient cursor-pointer text-left"
+      <p className="my-4 font-satoshi text-sm text-gray-700 text-left break-words">{post.prompt}</p>
+      <p className="font-inter text-sm blue_gradient cursor-pointer text-left break-words"
       onClick={() => handleTagClick && handleTagClick(post.tag)}>
         #{post.tag}
       </p>
       
-      { session?.user.id === post.creator._id && pathname === '/profile' && (
+      { session?.user.id === post.creator._id && pathname === `/profile/${post?.creator?._id}/${post?.creator?.username}` && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p
             className='font-inter text-sm green_gradient cursor-pointer'
