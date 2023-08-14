@@ -21,11 +21,11 @@ const PromptCard = ({ post , handleTagClick, handleEdit, handleDelete }) => {
 
     setTimeout(() => setCopied(""), 3000);
   }
-  console.log('hi,',post)
+
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer" onClick={() => router.push(`/profile/${post?.creator?._id}/${post?.creator?.username}`)}>
+        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer" onClick={() => router.push(`/profile/${post?.creator?._id}/${post?.creator?.username}`.toLowerCase())}>
           <Image
             src={post?.creator?.image}
             alt='user_image'
@@ -59,7 +59,7 @@ const PromptCard = ({ post , handleTagClick, handleEdit, handleDelete }) => {
         #{post.tag}
       </p>
       
-      { session?.user?.id === post?.creator?._id && pathname === `/profile/${post?.creator?._id}/${post?.creator?.username}` && (
+      { session?.user?.id === post?.creator?._id && pathname === `/profile/${post?.creator?._id}/${post?.creator?.username}`.toLowerCase() && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p
             className='font-inter text-sm green_gradient cursor-pointer'
